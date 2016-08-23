@@ -1,0 +1,11 @@
+[package]
+name = "spotifyd-http"
+version = "0.1.0"
+authors = ["Simon Persson <simon@flaskpost.org>"]
+
+[dependencies]
+librespot = {git="https://github.com/plietar/librespot.git"}
+getopts = "0.2"
+log = "0.3"
+nickel = "0.8"
+rustc-serialize = "0.3"
