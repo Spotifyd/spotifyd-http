@@ -3,6 +3,7 @@ extern crate nickel;
 extern crate librespot;
 extern crate getopts;
 extern crate rustc_serialize;
+
 #[macro_use]
 extern crate log;
 
@@ -39,9 +40,7 @@ fn main() {
     let credentials = main_helper::get_credentials(&session, &matches);
     session.login(credentials).unwrap();
 
-    let player = main_helper::create_player(&session, &matches);
-
-    let spirc_runner = SpircManager::new(session.clone(), player);
+    let spirc_runner = SpircManager::new(session.clone(), None);
     let spirc_remote = spirc_runner.clone();
     thread::spawn(move || spirc_runner.run());
     thread::spawn(move || {
