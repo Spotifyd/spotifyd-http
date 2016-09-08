@@ -72,5 +72,5 @@ pub fn run(spirc: SpircManager) {
         }
     }));
 
-    server.listen("127.0.0.1:6767");
+    server.listen("0.0.0.0:6767");
 }
