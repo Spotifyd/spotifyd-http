@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Simon Persson <simon@flaskpost.org>"]
 
 [dependencies]
-librespot = { path="../librespot", default-features = false, features=["with-syntex"]}
+librespot = { git="https://github.com/SimonPersson/librespot.git", default-features = false, features=["with-syntex"]}
 getopts = "0.2"
 log = "0.3"
 nickel = "0.8"
