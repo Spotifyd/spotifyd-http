@@ -3,12 +3,14 @@ extern crate nickel;
 extern crate librespot;
 extern crate getopts;
 extern crate rustc_serialize;
+extern crate env_logger;
 
 #[macro_use]
 extern crate log;
 
 use std::process::exit;
 use std::thread;
+use std::env;
 
 use librespot::spirc::SpircManager;
 use librespot::main_helper;
@@ -21,6 +23,11 @@ fn usage(program: &str, opts: &getopts::Options) -> String {
 }
 
 fn main() {
+    if env::var("RUST_LOG").is_err() {
+        env::set_var("RUST_LOG", "error")
+    }
+    env_logger::init().unwrap();
+
     let mut opts = getopts::Options::new();
     main_helper::add_session_arguments(&mut opts);
     main_helper::add_authentication_arguments(&mut opts);
