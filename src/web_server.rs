@@ -1,4 +1,4 @@
-use nickel::{Nickel, HttpRouter, FormBody};
+use nickel::{Nickel, HttpRouter, FormBody, Request, Response, MiddlewareResult};
 use nickel::status::StatusCode;
 
 use librespot::spirc::SpircManager;
@@ -10,8 +10,19 @@ fn ok<T>(_: T) -> StatusCode {
     StatusCode::Ok
 }
 
+fn enable_cors<'mw>(_req: &mut Request, mut res: Response<'mw>) -> MiddlewareResult<'mw> {
+    res.headers_mut()
+       .set_raw("Access-Control-Allow-Origin", vec![b"*".to_vec()]);
+    res.headers_mut()
+       .set_raw("Access-Control-Allow-Headers",
+                vec![b"Origin X-Requested-With Content-Type Accept".to_vec()]);
+    res.next_middleware()
+}
+
 pub fn run(spirc: SpircManager) {
     let mut server = Nickel::new();
+
+    server.utilize(enable_cors);
 
     let spirc_device_list = spirc.clone();
     server.get("/devices",
