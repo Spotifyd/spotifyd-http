@@ -17,5 +17,5 @@ Gets, replaces, or appends tracks to the playlist. The `PUT` and `POST` take
 one or more `id` parameters. Example:
 ```bash
 TRACKS="id=2BhU0Hl5OatWiCW93pE2b8&id=731OW49heGHCMrMOREHYlY&id=6zAPaRDoT99ThFtIXUJwhO"
-curl -X POST -d "$TRACKS" 127.0.0.1:6767/device_id/tracs
+curl -X POST -d "$TRACKS" 127.0.0.1:6767/device_id/tracks
 ```
