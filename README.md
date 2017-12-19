@@ -1,3 +1,8 @@
+# DEPRECATED
+
+I have stopped working on this API as Spotify have released an official API with a similar use case:
+https://developer.spotify.com/web-api/web-api-connect-endpoint-reference/
+
 # Spotifyd-http
 
 This web server remote controls Spotify Connect devices via HTTP requests.
